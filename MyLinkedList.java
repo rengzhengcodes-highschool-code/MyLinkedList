@@ -19,6 +19,7 @@ public class MyLinkedList{
 			end.setNext(insert);
 		}
 
+		size++;
 		return true;
 	}
 
@@ -49,6 +50,9 @@ public class MyLinkedList{
 
 			}
 		}
+
+		size++;
+		return true;
 	}
 	public String get(int index);
 	public String set(int index, String value);
