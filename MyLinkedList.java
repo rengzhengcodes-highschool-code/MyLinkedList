@@ -25,10 +25,14 @@ public class MyLinkedList{
 	}
 
 	private Node seek(int index) {
-		Node nodeAtIndex = start;
+		if (index < 0 || index > size)  {
+			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
+		}
+		
+		Node nodeAtIndex = start; //node initialized with value from node at index 0.
 
 		for (int i = 1; i <= index; i++) {
-			nodeAtIndex = nodeAtIndex.getNext();
+			nodeAtIndex = nodeAtIndex.getNext(); ///iterates through one node at a time across the index.
 		}
 
 		return nodeAtIndex;
