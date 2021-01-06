@@ -56,6 +56,7 @@ public class MyLinkedList{
 				end = insert;
 			} else {
 				Node before = seek(index - 1);
+				insert.setNext(before.getNext());
 				before.setNext(insert);
 			}
 		}
