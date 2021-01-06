@@ -11,22 +11,45 @@ public class MyLinkedList{
 	}
 
 	public boolean add(String value) {
-		try {
-			Node insert = new Node(value);
+		Node insert = new Node(value);
 
+		if (size == 0) {
+			start = end = insert; //all point towards same node instance as head + tail.
+		} else {
+			end.nextSet(insert);
+		}
+
+		return true;
+	}
+
+	private Node seek(int index) {
+		Node nodeAtIndex = start;
+
+		for (int i = 1; i <= index; i++) {
+			nodeAtIndex = nodeAtIndex.nextGet();
+		}
+
+		return nodeAtIndex;
+	}
+
+	public boolean add(int index, String value) {
+		Node insert = new Node(value);
+
+		if (index == 0) {
 			if (size == 0) {
-				start = end = insert; //all point towards same node instance as head + tail.
+				start = end = insert;
 			} else {
-				end.nextSet(insert);
+				insert.nextSet(start);
+				start = insert;
 			}
+		} else {
+			if (index < 0 || index > size)  {
+				throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
+			} else {
 
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+			}
 		}
 	}
-	public boolean add(int index, String value);
 	public String get(int index);
 	public String set(int index, String value);
 	public String toString();
