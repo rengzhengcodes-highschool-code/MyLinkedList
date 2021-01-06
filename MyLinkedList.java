@@ -17,6 +17,7 @@ public class MyLinkedList{
 			start = end = insert; //all point towards same node instance as head + tail.
 		} else {
 			end.setNext(insert);
+			end = insert;
 		}
 
 		size++;
@@ -46,8 +47,12 @@ public class MyLinkedList{
 		} else {
 			if (index < 0 || index > size)  {
 				throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
+			} else if (index == size) {
+				end.setNext(insert);
+				end = insert;
 			} else {
-
+				Node before = seek(index - 1);
+				before.setNext(insert);
 			}
 		}
 
