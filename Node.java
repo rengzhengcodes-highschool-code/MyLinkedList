@@ -7,31 +7,31 @@ public class Node {
 	private Node next, prev;
 	//write get/set methods for all three instance variables.
 
-	public String dataGet() {
+	public String getData() {
 		return data;
 	}
 
-	public String dataSet(String set) {
+	public String setData(String set) {
 		String dataHolder = data;
 		data = set;
 		return dataHolder;
 	}
 
-	public Node nextGet() {
+	public Node getNext() {
 		return next;
 	}
-	public Node nextSet(Node after) {
+	public Node setNext(Node after) {
 		Node nextHolder = next;
 		//temporarily stores the next link to return after "after" assignment to next.
 		next = after;
 		return nextHolder;
 	}
 
-	public Node prevGet() {
+	public Node getPrev() {
 		return prev;
 	}
 
-	public Node prevSet(Node before) {
+	public Node setPrev(Node before) {
 		Node prevHolder = prev;
 		//temporarily stores the previous link to return after before assignment to prev.
 		prev = before;

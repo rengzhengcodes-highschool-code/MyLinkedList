@@ -16,7 +16,7 @@ public class MyLinkedList{
 		if (size == 0) {
 			start = end = insert; //all point towards same node instance as head + tail.
 		} else {
-			end.nextSet(insert);
+			end.setNext(insert);
 		}
 
 		return true;
@@ -26,7 +26,7 @@ public class MyLinkedList{
 		Node nodeAtIndex = start;
 
 		for (int i = 1; i <= index; i++) {
-			nodeAtIndex = nodeAtIndex.nextGet();
+			nodeAtIndex = nodeAtIndex.getNext();
 		}
 
 		return nodeAtIndex;
@@ -39,7 +39,7 @@ public class MyLinkedList{
 			if (size == 0) {
 				start = end = insert;
 			} else {
-				insert.nextSet(start);
+				insert.setNext(start);
 				start = insert;
 			}
 		} else {
