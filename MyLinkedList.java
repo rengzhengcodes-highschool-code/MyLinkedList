@@ -59,8 +59,17 @@ public class MyLinkedList{
 		size++;
 		return true;
 	}
-	public String get(int index);
-	public String set(int index, String value);
+
+	public String get(int index) {
+		Node nodeAtIndex = seek(index);
+		return nodeAtIndex.getData();
+	}
+
+	public String set(int index, String value)  {
+		Node nodeAtIndex = seek(index);
+		return nodeAtIndex.setData(value);
+	}
+
 	public String toString();
  //Any helper method that returns a Node object MUST BE PRIVATE!
 }
