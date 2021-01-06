@@ -7,6 +7,16 @@ public class Node {
 	private Node next, prev;
 	//write get/set methods for all three instance variables.
 
+	public String dataGet() {
+		return data;
+	}
+
+	public String dataSet(String set) {
+		String dataHolder = data;
+		data = set;
+		return dataHolder;
+	}
+
 	public Node nextGet() {
 		return next;
 	}
