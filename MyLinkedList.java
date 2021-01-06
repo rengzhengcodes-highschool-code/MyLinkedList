@@ -28,7 +28,7 @@ public class MyLinkedList{
 		if (index < 0 || index > size)  {
 			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
 		}
-		
+
 		Node nodeAtIndex = start; //node initialized with value from node at index 0.
 
 		for (int i = 1; i <= index; i++) {
@@ -69,11 +69,22 @@ public class MyLinkedList{
 		return nodeAtIndex.getData();
 	}
 
-	public String set(int index, String value)  {
+	public String set(int index, String value) {
 		Node nodeAtIndex = seek(index);
 		return nodeAtIndex.setData(value);
 	}
 
-	public String toString();
+	public String toString() {
+		Node currentNode = start;
+		String output = "{\"" + currentNode.getData() + "\"";
+
+		while (currentNode.getNext() != null) {
+			currentNode = currentNode.getNext();
+			output += "\", " + currentNode.getData() + "\"";
+		}
+
+		output += "}";
+		return output;
+	}
  //Any helper method that returns a Node object MUST BE PRIVATE!
 }
