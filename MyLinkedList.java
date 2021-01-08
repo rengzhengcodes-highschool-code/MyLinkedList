@@ -80,11 +80,24 @@ public class MyLinkedList{
 	public String remove(int index) {
 		Node trash = seek(index);
 
-		if (index == 0) {
-			trash.getNext().setPrev(trash.getPrev());
+		if (size == 1) {
+			start = end = null;
+		} else if (index == 0) {
+			trash.getNext().setPrev(null);
+			start = trash.getNext();
+		} else if (index == size - 1) {
+			trash.getPrev().setNext(null);
+			end = trash.getNext();
+		} else {
 			trash.getPrev().setNext(trash.getNext());
+			trash.getNext().setPrev(trash.getPrev());
 		}
 
+		if (size == 2) { //checks if we're only down to 1 value.
+
+		}
+
+		size--;
 		return trash.getData();
 	}
 
