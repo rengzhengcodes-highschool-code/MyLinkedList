@@ -75,6 +75,11 @@ public class MyLinkedList{
 
 	public String toString() {
 		Node currentNode = start;
+
+		if (size == 0) {
+			return "{}";
+		}
+
 		String output = "{\"" + currentNode.getData() + "\"";
 
 		while (currentNode.getNext() != null) {
