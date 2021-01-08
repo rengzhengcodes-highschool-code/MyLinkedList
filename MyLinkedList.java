@@ -26,7 +26,7 @@ public class MyLinkedList{
 	}
 
 	private Node seek(int index) {
-		if (index < 0 || index > size)  {
+		if (index < 0 || index >= size)  {
 			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
 		}
 
@@ -81,6 +81,7 @@ public class MyLinkedList{
 			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
 		} else if (index == 0) {
 			Node trash = seek(index);
+
 		}
 		return null;
 	}
