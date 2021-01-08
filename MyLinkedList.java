@@ -1,6 +1,12 @@
 public class MyLinkedList{
 	private int size;
 	private Node start,end;
+	private static boolean DEBUG = true;
+
+	public static void debug(String message) {
+		if (DEBUG) System.out.println(message);
+	}
+
 	public MyLinkedList() {
 		/*create a constructor*/
 		size = 0;
@@ -33,9 +39,12 @@ public class MyLinkedList{
 		Node nodeAtIndex;
 
 		if (index <= size / 2) {
+			debug("0");
 			nodeAtIndex = start;
 
 			for (int i = 1; i <= index; i++) {
+				debug(i + "");
+				debug(this.toString());
 				nodeAtIndex = nodeAtIndex.getNext(); ///iterates through one node at a time across the index.
 			}
 		} else {
@@ -71,6 +80,7 @@ public class MyLinkedList{
 				Node at = seek(index);
 				insert.setPrev(at.setPrev(insert));
 				insert.getPrev().setNext(insert);
+				insert.setNext(at);
 			}
 		}
 
@@ -123,14 +133,14 @@ public class MyLinkedList{
 			return "{}";
 		}
 
-		String output = "{\"" + currentNode.getData() + "\"";
+		String output = "{\"" + currentNode.getData();
 
 		while (currentNode.getNext() != null) {
 			currentNode = currentNode.getNext();
-			output += "\", " + currentNode.getData() + "\"";
+			output += "\", \"" + currentNode.getData();
 		}
 
-		output += "}";
+		output += "\"}";
 		return output;
 	}
 
