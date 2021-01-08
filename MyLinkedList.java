@@ -38,7 +38,7 @@ public class MyLinkedList{
 		return nodeAtIndex;
 	}
 
-	public boolean add(int index, String value) {
+	public void add(int index, String value) {
 		Node insert = new Node(value);
 
 		if (index == 0) {
@@ -61,7 +61,6 @@ public class MyLinkedList{
 		}
 
 		size++;
-		return true;
 	}
 
 	public String get(int index) {
