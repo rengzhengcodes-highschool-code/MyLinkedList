@@ -30,10 +30,20 @@ public class MyLinkedList{
 			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
 		}
 
-		Node nodeAtIndex = start; //node initialized with value from node at index 0.
+		Node nodeAtIndex;
 
-		for (int i = 1; i <= index; i++) {
-			nodeAtIndex = nodeAtIndex.getNext(); ///iterates through one node at a time across the index.
+		if (index <= size / 2) {
+			nodeAtIndex = start;
+
+			for (int i = 1; i <= index; i++) {
+				nodeAtIndex = nodeAtIndex.getNext(); ///iterates through one node at a time across the index.
+			}
+		} else {
+			nodeAtIndex = end;
+
+			for (int i = size - 2; i >= index; i--) {
+				nodeAtIndex = nodeAtIndex.getPrev(); ///iterates through one node at a time across the index.
+			}
 		}
 
 		return nodeAtIndex;
