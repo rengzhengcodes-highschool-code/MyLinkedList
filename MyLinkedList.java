@@ -101,6 +101,11 @@ public class MyLinkedList{
 		return trash.getData();
 	}
 
+	public void extend(MyLinkedList other) {
+		other.start.setPrev(this.end);
+		this.end.setNext(other.start);
+	}
+
 	public String toString() {
 		Node currentNode = start;
 
