@@ -129,36 +129,28 @@ public class MyLinkedList{
 	public String toString() {
 		Node currentNode = start;
 
-		if (size == 0) {
-			return "{}";
-		}
-
-		String output = "{\"" + currentNode.getData();
+		String output = "[" + currentNode.getData();
 
 		while (currentNode.getNext() != null) {
 			currentNode = currentNode.getNext();
-			output += "\", \"" + currentNode.getData();
+			output += ", " + currentNode.getData();
 		}
 
-		output += "\"}";
+		output += "]";
 		return output;
 	}
 
 	public String toStringReversed() {
 		Node currentNode = end;
 
-		if (size == 0) {
-			return "[]";
-		}
-
-		String output = "[\"" + currentNode.getData();
+		String output = "[" + currentNode.getData();
 
 		while (currentNode.getPrev() != null) {
 			currentNode = currentNode.getPrev();
-			output += "\", \"" + currentNode.getData();
+			output += ", " + currentNode.getData();
 		}
 
-		output += "\"]";
+		output += "]";
 		return output;
 	}
  //Any helper method that returns a Node object MUST BE PRIVATE!
