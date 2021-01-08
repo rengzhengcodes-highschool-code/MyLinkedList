@@ -17,6 +17,7 @@ public class MyLinkedList{
 			start = end = insert; //all point towards same node instance as head + tail.
 		} else {
 			end.setNext(insert);
+			insert.setPrev(end);
 			end = insert;
 		}
 
@@ -46,6 +47,7 @@ public class MyLinkedList{
 				start = end = insert;
 			} else {
 				insert.setNext(start);
+				start.setPrev(insert);
 				start = insert;
 			}
 		} else {
@@ -53,6 +55,7 @@ public class MyLinkedList{
 				throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
 			} else if (index == size) {
 				end.setNext(insert);
+				insert.setPrev(end);
 				end = insert;
 			} else {
 				Node before = seek(index - 1);
@@ -71,6 +74,15 @@ public class MyLinkedList{
 	public String set(int index, String value) {
 		Node nodeAtIndex = seek(index);
 		return nodeAtIndex.setData(value);
+	}
+
+	public String remove(int index) {
+		if (index < 0 || index > size)  {
+			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
+		} else if (index == 0) {
+			Node trash = seek(index);
+		}
+		return null;
 	}
 
 	public String toString() {
