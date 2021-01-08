@@ -58,8 +58,9 @@ public class MyLinkedList{
 				insert.setPrev(end);
 				end = insert;
 			} else {
-				Node before = seek(index - 1);
-				insert.setNext(before.setNext(insert));
+				Node at = seek(index);
+				insert.setPrev(at.setPrev(insert));
+				insert.getPrev().setNext(insert);
 			}
 		}
 
@@ -77,13 +78,14 @@ public class MyLinkedList{
 	}
 
 	public String remove(int index) {
-		if (index < 0 || index > size)  {
-			throw new IndexOutOfBoundsException("Index " + index + " is out of range from 0 to " + size);
-		} else if (index == 0) {
-			Node trash = seek(index);
+		Node trash = seek(index);
 
+		if (index == 0) {
+			trash.getNext().setPrev(trash.getPrev());
+			trash.getPrev().setNext(trash.getNext());
 		}
-		return null;
+
+		return trash.getData();
 	}
 
 	public String toString() {
