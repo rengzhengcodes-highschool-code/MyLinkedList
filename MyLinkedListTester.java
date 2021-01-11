@@ -1,14 +1,19 @@
-public class MyLinkedListTester extends TesterMethods {
+import java.util.Arrays;
+
+public class MyLinkedListTester {
 	public static boolean failure = false;
 
 	public static void main(String[] args) {
+		System.out.println("Assumptions:");
+		System.out.println("MyLinkedList.toString() is functioning properly.");
+
 		failure = sizeTester(1000);
 
 		TesterMethods.overall(failure);
 	}
 
 	public static boolean sizeTester(int tests) {
-		tester("size");
+		TesterMethods.tester("size");
 		boolean fail = false;
 		//tests all size numbers from 0 to tests - 1
 		for (int test = 0; test < tests; test++) {
@@ -44,6 +49,13 @@ public class MyLinkedListTester extends TesterMethods {
 		}
 
 		TesterMethods.methodMessage("size", fail);
+		return fail;
+	}
+
+	public static boolean addTester(int tests) {
+		TesterMethods.tester("add");
+		boolean fail = false;
+
 		return fail;
 	}
 }
