@@ -405,6 +405,44 @@ public class MyLinkedListTester {
 			}
 		}
 
+		for (int test = 0; test < tests; test++) {
+			ArrayList<String> reference = new ArrayList<String>();
+			analyte = new MyLinkedList();
+			Random seed = new Random(test);
+			//generator sequence
+			for (int trial = 0; trial < tests; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				reference.add(string);
+				analyte.add(string);
+			}
+			//tester sequence
+			for (int trial = 0; trial < tests; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				if (!reference.set(trial, string).equals(analyte.set(trial, string))) {
+					fail = true;
+					TesterMethods.errorMessage("Set not returning the right values.");
+				}
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
+			}
+		}
+
+		TesterMethods.methodMessage("set", fail);
 		return fail;
 	}
 }
