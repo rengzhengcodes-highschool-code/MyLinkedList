@@ -420,13 +420,13 @@ public class MyLinkedListTester {
 			analyte = new MyLinkedList();
 			Random seed = new Random(test);
 			//generator sequence
-			for (int trial = 0; trial < tests; trial++) {
+			for (int trial = 0; trial < test; trial++) {
 				String string = Integer.toString(seed.nextInt());
 				reference.add(string);
 				analyte.add(string);
 			}
 			//tester sequence
-			for (int trial = 0; trial < tests; trial++) {
+			for (int trial = 0; trial < test; trial++) {
 				String string = Integer.toString(seed.nextInt());
 				if (!reference.set(trial, string).equals(analyte.set(trial, string))) {
 					fail = true;
@@ -508,6 +508,127 @@ public class MyLinkedListTester {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
 				e.printStackTrace();
 				fail = true;
+			}
+		}
+		//start remove tester
+		System.out.println("Removing from start.");
+
+		for (int test = 0; test < tests; test++) {
+			ArrayList<String> reference = new ArrayList<String>();
+			analyte = new MyLinkedList();
+			Random seed = new Random(test);
+			//generator sequence
+			for (int trial = 0; trial < test; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				reference.add(string);
+				analyte.add(string);
+			}
+			//tester sequence
+			for (int trial = 0; trial < test; trial++) {
+				if (!reference.remove(0).equals(analyte.remove(0))) {
+					TesterMethods.errorMessage("Remove does not return the correct value");
+				}
+				if (reference.size() != analyte.size()) {
+					TesterMethods.errorMessage("Size is not decrementing properly");
+				}
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
+			}
+		}
+		//end remove tester
+		System.out.println("Removing from end.");
+
+		for (int test = 0; test < tests; test++) {
+			ArrayList<String> reference = new ArrayList<String>();
+			analyte = new MyLinkedList();
+			Random seed = new Random(test);
+			//generator sequence
+			for (int trial = 0; trial < test; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				reference.add(string);
+				analyte.add(string);
+			}
+			//tester sequence
+			for (int trial = 0; trial < test; trial++) {
+				if (!reference.remove(test-1-trial).equals(analyte.remove(test-1-trial))) {
+					TesterMethods.errorMessage("Remove does not return the correct value");
+				}
+				if (reference.size() != analyte.size()) {
+					TesterMethods.errorMessage("Size is not decrementing properly");
+				}
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
+			}
+		}
+		//random remove tester
+		System.out.println("Removing from random indices.");
+
+		for (int test = 0; test < tests; test++) {
+			ArrayList<String> reference = new ArrayList<String>();
+			analyte = new MyLinkedList();
+			Random seed = new Random(test);
+			//generator sequence
+			for (int trial = 0; trial < test; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				reference.add(string);
+				analyte.add(string);
+			}
+			//tester sequence
+			for (int trial = 0; trial < test; trial++) {
+				int removeAt = seed.nextInt(reference.size());
+				if (!reference.remove(removeAt).equals(analyte.remove(removeAt))) {
+					TesterMethods.errorMessage("Remove does not return the correct value");
+				}
+				if (reference.size() != analyte.size()) {
+					TesterMethods.errorMessage("Size is not decrementing properly");
+				}
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
 			}
 		}
 
