@@ -12,7 +12,8 @@ public class MyLinkedListTester {
 			failure = sizeTester(10) || failure;
 			failure = addAtIndexTester(100) || failure;
 			failure = getTester(10) || failure;
-			failure = setTester(1000) || failure;
+			failure = setTester(100) || failure;
+			failure = removeTester(1000) || failure;
 
 			TesterMethods.overall(failure);
 		} else {
@@ -128,6 +129,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -144,6 +146,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -160,6 +163,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -293,6 +297,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -309,6 +314,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -325,6 +331,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -369,6 +376,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -385,6 +393,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -401,6 +410,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
 				fail = true;
 			}
 		}
@@ -446,9 +456,60 @@ public class MyLinkedListTester {
 		return fail;
 	}
 
-	public static boolean removeTester() {
+	public static boolean removeTester(int tests) {
 		TesterMethods.tester("remove");
 		boolean fail = false;
+		//throws test
+		MyLinkedList analyte = new MyLinkedList();
+		int[] indices = {-2, -1, 0, 1, 2};
+
+		for (int index : indices) {
+			try {
+				analyte.remove(index);
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 1, 2};
+
+		for (int index : indices) {
+			try {
+				analyte.remove(index);
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 2, 3};
+
+		for (int index : indices) {
+			try {
+				analyte.remove(index);
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				e.printStackTrace();
+				fail = true;
+			}
+		}
 
 		TesterMethods.methodMessage("remove", fail);
 		return fail;
