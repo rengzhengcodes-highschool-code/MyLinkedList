@@ -124,6 +124,7 @@ public class MyLinkedList{
 	public void extend(MyLinkedList other) {
 		other.start.setPrev(this.end);
 		this.end.setNext(other.start);
+		size += other.size();
 	}
 
 	public String toString() {
