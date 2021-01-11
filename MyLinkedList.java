@@ -125,6 +125,8 @@ public class MyLinkedList{
 		other.start.setPrev(this.end);
 		this.end.setNext(other.start);
 		size += other.size();
+		other.start = other.end = null;
+		other.size = 0;
 	}
 
 	public String toString() {
@@ -145,7 +147,7 @@ public class MyLinkedList{
 
 	public String toStringReversed() {
 		if (size == 0) return "[]";
-		
+
 		Node currentNode = end;
 
 		String output = "[" + currentNode.getData();
