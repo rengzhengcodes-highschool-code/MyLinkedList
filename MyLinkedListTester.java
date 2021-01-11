@@ -1,15 +1,25 @@
 import java.util.Arrays;
-
+import java.util.Random;
 public class MyLinkedListTester {
 	public static boolean failure = false;
 
 	public static void main(String[] args) {
-		System.out.println("Assumptions:");
-		System.out.println("MyLinkedList.toString() is functioning properly.");
+		if (args.length > 0 && Boolean.parseBoolean(args[0])) {
+			failure = sizeTester(1000);
 
-		failure = sizeTester(1000);
+			TesterMethods.overall(failure);
+		} else {
+			System.out.println("Assumptions:");
+			String[] assumptions = {
+				"MyLinkedList.toString() is functioning properly.",
+				"MyLinkedList.toStringReversed() is functioning properly.",
+				"If you have read these assumptions, enter true into the 1st arg of main."
+			};
 
-		TesterMethods.overall(failure);
+			for (int assumption = 0; assumption < assumptions.length; assumption++) {
+				System.out.println(assumption + ". " + assumptions[assumption]);
+			}
+		}
 	}
 
 	public static boolean sizeTester(int tests) {
@@ -32,8 +42,9 @@ public class MyLinkedListTester {
 			}
 		}
 		//tests random sizes test times up to test size
+		Random sizeSeed = new Random(tests);
 		for (int test = 0; test < tests; test++) {
-			int sizeExpected = TesterMethods.randInt(tests);
+			int sizeExpected = sizeSeed.nextInt(tests);
 			MyLinkedList analyte = new MyLinkedList();
 
 			for (int amount = 0; amount < sizeExpected; amount++) {
@@ -55,6 +66,8 @@ public class MyLinkedListTester {
 	public static boolean addTester(int tests) {
 		TesterMethods.tester("add");
 		boolean fail = false;
+
+		for (int test = 0; test < tests; test++);
 
 		return fail;
 	}
