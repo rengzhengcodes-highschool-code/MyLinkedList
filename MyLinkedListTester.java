@@ -12,6 +12,7 @@ public class MyLinkedListTester {
 			failure = sizeTester(10) || failure;
 			failure = addAtIndexTester(100) || failure;
 			failure = getTester(10) || failure;
+			failure = setTester(1000) || failure;
 
 			TesterMethods.overall(failure);
 		} else {
@@ -349,6 +350,61 @@ public class MyLinkedListTester {
 		}
 
 		TesterMethods.methodMessage("get", fail);
+		return fail;
+	}
+
+	public static boolean setTester(int tests) {
+		TesterMethods.tester("set");
+		boolean fail = false;
+		//throws test
+		MyLinkedList analyte = new MyLinkedList();
+		int[] indices = {-2, -1, 0, 1, 2};
+
+		for (int index : indices) {
+			try {
+				analyte.set(index, "test");
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 1, 2};
+
+		for (int index : indices) {
+			try {
+				analyte.set(index, "text");
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 2, 3};
+
+		for (int index : indices) {
+			try {
+				analyte.set(index, "text");
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
 		return fail;
 	}
 }
