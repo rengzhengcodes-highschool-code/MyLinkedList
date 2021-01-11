@@ -445,4 +445,12 @@ public class MyLinkedListTester {
 		TesterMethods.methodMessage("set", fail);
 		return fail;
 	}
+
+	public static boolean removeTester() {
+		TesterMethods.tester("remove");
+		boolean fail = false;
+
+		TesterMethods.methodMessage("remove", fail);
+		return fail;
+	}
 }
