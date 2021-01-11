@@ -106,8 +106,13 @@ public class MyLinkedListTester {
 	}
 
 	public static boolean addAtIndexTester(int tests) {
+		TesterMethods.tester("addAtIndex");
+		boolean fail = false;
+
 		MyLinkedList test = new MyLinkedList();
-		
+		ArrayList<String> reference = new ArrayList<String>();
+
+		return fail;
 	}
 
 	public static boolean getTester(int tests) {
