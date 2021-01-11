@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MyLinkedListTester {
@@ -6,9 +7,9 @@ public class MyLinkedListTester {
 
 	public static void main(String[] args) {
 		if (args.length > 0 && Boolean.parseBoolean(args[0])) {
-			failure = sizeTester(1000);
-			failure = addTester(1000);
-			failure = getTester(1000);
+			failure = sizeTester(10);
+			failure = addTester(100);
+			failure = getTester(10);
 
 			TesterMethods.overall(failure);
 		} else {
@@ -102,6 +103,11 @@ public class MyLinkedListTester {
 
 		TesterMethods.methodMessage("add", fail);
 		return fail;
+	}
+
+	public static boolean addAtIndexTester(int tests) {
+		MyLinkedList test = new MyLinkedList();
+		
 	}
 
 	public static boolean getTester(int tests) {
