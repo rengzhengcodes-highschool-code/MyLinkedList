@@ -109,9 +109,22 @@ public class MyLinkedListTester {
 		TesterMethods.tester("addAtIndex");
 		boolean fail = false;
 
-		MyLinkedList test = new MyLinkedList();
+		MyLinkedList analyte = new MyLinkedList();
 		ArrayList<String> reference = new ArrayList<String>();
+		int[] indices = {-1, 0, 1};
 
+		for (int index : indices) {
+			try {
+				analyte.add(index, "test");
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index);
+				fail = true;
+			}
+		}
+
+		TesterMethods.methodMessage("addAtIndex", fail);
 		return fail;
 	}
 
@@ -119,10 +132,58 @@ public class MyLinkedListTester {
 		TesterMethods.tester("get");
 		boolean fail = false;
 
+		MyLinkedList analyte = new MyLinkedList();
+		int[] indices = {-2, -1, 0, 1, 2};
+
+		for (int index : indices) {
+			try {
+				analyte.get(index);
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 1, 2};
+
+		for (int index : indices) {
+			try {
+				analyte.get(index);
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 2, 3};
+
+		for (int index : indices) {
+			try {
+				analyte.get(index);
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
 		for (int test = 0; test < tests; test++) {
 			Random seed = new Random(test);
 			String[] reference = new String[test];
-			MyLinkedList analyte = new MyLinkedList();
+			analyte = new MyLinkedList();
 
 			for (int index = 0; index < test; index++) {
 				reference[index] = Integer.toString(seed.nextInt());
