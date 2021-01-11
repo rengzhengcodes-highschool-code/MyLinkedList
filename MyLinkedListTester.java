@@ -9,6 +9,7 @@ public class MyLinkedListTester {
 		if (args.length > 0 && Boolean.parseBoolean(args[0])) {
 			failure = sizeTester(10);
 			failure = addTester(100);
+			failure = addAtIndexTester(1000);
 			failure = getTester(10);
 
 			TesterMethods.overall(failure);
@@ -110,16 +111,50 @@ public class MyLinkedListTester {
 		boolean fail = false;
 
 		MyLinkedList analyte = new MyLinkedList();
-		ArrayList<String> reference = new ArrayList<String>();
-		int[] indices = {-1, 0, 1};
+		//throws test
+		int[] indices = {-2, -1, 1, 2};
 
 		for (int index : indices) {
 			try {
 				analyte.add(index, "test");
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
 			} catch (IndexOutOfBoundsException e) {
 				//TesterMethods.passMessage("Correct exception thrown.");
 			} catch (Exception e) {
-				TesterMethods.errorMessage("Incorrect exception thrown for index " + index);
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 2, 3};
+
+		for (int index : indices) {
+			try {
+				analyte.add(index, "test");
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
+				fail = true;
+			}
+		}
+
+		analyte.add("test");
+		indices = new int[]{-2, -1, 3, 4};
+
+		for (int index : indices) {
+			try {
+				analyte.add(index, "test");
+				TesterMethods.errorMessage("IndexOutOfBoundsException expected at " + index + " at size " + 0);
+				fail = true;
+			} catch (IndexOutOfBoundsException e) {
+				//TesterMethods.passMessage("Correct exception thrown.");
+			} catch (Exception e) {
+				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
 				fail = true;
 			}
 		}
@@ -131,7 +166,7 @@ public class MyLinkedListTester {
 	public static boolean getTester(int tests) {
 		TesterMethods.tester("get");
 		boolean fail = false;
-
+		//throws test
 		MyLinkedList analyte = new MyLinkedList();
 		int[] indices = {-2, -1, 0, 1, 2};
 
