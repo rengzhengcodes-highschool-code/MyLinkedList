@@ -29,6 +29,46 @@ public class MyLinkedListTester {
 		}
 	}
 
+	public static boolean addTester(int tests) {
+		TesterMethods.tester("add");
+		boolean fail = false;
+
+		for (int test = 0; test < tests; test++) {
+			Random seed = new Random(test);
+			String[] expected = new String[test];
+			String[] reversed = new String[test];
+			MyLinkedList analyte = new MyLinkedList();
+
+			for (int index = 0; index < test; index++) {
+				expected[index] = Integer.toString(seed.nextInt());
+				reversed[test-1-index] = expected[index];
+				if (!analyte.add(expected[index])) {
+					fail = true;
+					System.out.println("Your boolean add output is wrong.");
+				}
+			}
+
+			if (Arrays.toString(expected).equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links wrong.");
+				TesterMethods.errorMessage(test, Arrays.toString(expected), analyte.toString());
+			}
+
+			if (Arrays.toString(reversed).equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("backward links wrong.");
+				TesterMethods.errorMessage(test, Arrays.toString(expected), analyte.toStringReversed());
+			}
+		}
+
+		TesterMethods.methodMessage("add", fail);
+		return fail;
+	}
+
 	public static boolean sizeTester(int tests) {
 		TesterMethods.tester("size");
 		boolean fail = false;
@@ -67,46 +107,6 @@ public class MyLinkedListTester {
 		}
 
 		TesterMethods.methodMessage("size", fail);
-		return fail;
-	}
-
-	public static boolean addTester(int tests) {
-		TesterMethods.tester("add");
-		boolean fail = false;
-
-		for (int test = 0; test < tests; test++) {
-			Random seed = new Random(test);
-			String[] expected = new String[test];
-			String[] reversed = new String[test];
-			MyLinkedList analyte = new MyLinkedList();
-
-			for (int index = 0; index < test; index++) {
-				expected[index] = Integer.toString(seed.nextInt());
-				reversed[test-1-index] = expected[index];
-				if (!analyte.add(expected[index])) {
-					fail = true;
-					System.out.println("Your boolean add output is wrong.");
-				}
-			}
-
-			if (Arrays.toString(expected).equals(analyte.toString())) {
-				//TesterMethods.passMessage(test);
-			} else {
-				fail = true;
-				TesterMethods.errorMessage("Forward links wrong.");
-				TesterMethods.errorMessage(test, Arrays.toString(expected), analyte.toString());
-			}
-
-			if (Arrays.toString(reversed).equals(analyte.toStringReversed())) {
-				//TesterMethods.passMessage(test);
-			} else {
-				fail = true;
-				TesterMethods.errorMessage("backward links wrong.");
-				TesterMethods.errorMessage(test, Arrays.toString(expected), analyte.toStringReversed());
-			}
-		}
-
-		TesterMethods.methodMessage("add", fail);
 		return fail;
 	}
 
