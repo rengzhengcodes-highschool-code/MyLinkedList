@@ -107,14 +107,10 @@ public class MyLinkedList{
 			start = trash.getNext();
 		} else if (index == size - 1) {
 			trash.getPrev().setNext(null);
-			end = trash.getNext();
+			end = trash.getPrev();
 		} else {
 			trash.getPrev().setNext(trash.getNext());
 			trash.getNext().setPrev(trash.getPrev());
-		}
-
-		if (size == 2) { //checks if we're only down to 1 value.
-
 		}
 
 		size--;
