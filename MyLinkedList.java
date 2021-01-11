@@ -39,12 +39,12 @@ public class MyLinkedList{
 		Node nodeAtIndex;
 
 		if (index <= size / 2) {
-			debug("0");
+			//debug("0");
 			nodeAtIndex = start;
 
 			for (int i = 1; i <= index; i++) {
-				debug(i + "");
-				debug(this.toString());
+				//debug(i + "");
+				//debug(this.toString());
 				nodeAtIndex = nodeAtIndex.getNext(); ///iterates through one node at a time across the index.
 			}
 		} else {
