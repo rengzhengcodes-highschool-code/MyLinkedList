@@ -8,6 +8,7 @@ public class MyLinkedListTester {
 		if (args.length > 0 && Boolean.parseBoolean(args[0])) {
 			failure = sizeTester(1000);
 			failure = addTester(1000);
+			failure = getTester(1000);
 
 			TesterMethods.overall(failure);
 		} else {
@@ -100,6 +101,34 @@ public class MyLinkedListTester {
 		}
 
 		TesterMethods.methodMessage("add", fail);
+		return fail;
+	}
+
+	public static boolean getTester(int tests) {
+		TesterMethods.tester("get");
+		boolean fail = false;
+
+		for (int test = 0; test < tests; test++) {
+			Random seed = new Random(test);
+			String[] reference = new String[test];
+			MyLinkedList analyte = new MyLinkedList();
+
+			for (int index = 0; index < test; index++) {
+				reference[index] = Integer.toString(seed.nextInt());
+				analyte.add(reference[index]);
+			}
+
+			for (int index = 0; index < test; index++) {
+				if (reference[index].equals(analyte.get(index))) {
+					//TesterMethods.passMessage(test + "." + index);
+				} else {
+					TesterMethods.errorMessage(test, Arrays.toString(reference), analyte.toString());
+					fail = true;
+				}
+			}
+		}
+
+		TesterMethods.methodMessage("get", fail);
 		return fail;
 	}
 }
