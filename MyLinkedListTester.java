@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MyLinkedListTester {
@@ -7,10 +8,10 @@ public class MyLinkedListTester {
 
 	public static void main(String[] args) {
 		if (args.length > 0 && Boolean.parseBoolean(args[0])) {
-			failure = sizeTester(10);
-			failure = addTester(100);
-			failure = addAtIndexTester(1000);
-			failure = getTester(10);
+			failure = failure || addTester(100);
+			failure = sizeTester(10) || failure;
+			failure = addAtIndexTester(100) || failure;
+			failure = getTester(10) || failure;
 
 			TesterMethods.overall(failure);
 		} else {
@@ -18,7 +19,8 @@ public class MyLinkedListTester {
 			String[] assumptions = {
 				"MyLinkedList.toString() is functioning properly.",
 				"MyLinkedList.toStringReversed() is functioning properly.",
-				"If you have read these assumptions, enter true into the 1st arg of main."
+				"You know that size() tests add()'s size increment function and that if add() does not work the tester will not proceed",
+				"If you have read these assumptions, enter true into the 1st arg of main.",
 			};
 
 			for (int assumption = 0; assumption < assumptions.length; assumption++) {
@@ -91,6 +93,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage(test);
 			} else {
 				fail = true;
+				TesterMethods.errorMessage("Forward links wrong.");
 				TesterMethods.errorMessage(test, Arrays.toString(expected), analyte.toString());
 			}
 
@@ -98,6 +101,7 @@ public class MyLinkedListTester {
 				//TesterMethods.passMessage(test);
 			} else {
 				fail = true;
+				TesterMethods.errorMessage("backward links wrong.");
 				TesterMethods.errorMessage(test, Arrays.toString(expected), analyte.toStringReversed());
 			}
 		}
@@ -156,6 +160,115 @@ public class MyLinkedListTester {
 			} catch (Exception e) {
 				TesterMethods.errorMessage("Incorrect exception thrown for index " + index + " at size " + 0);
 				fail = true;
+			}
+		}
+		//adding at start tester
+		System.out.println("Testing adding at the start");
+
+		for (int test = 0; test < tests; test++) {
+			analyte = new MyLinkedList();
+			ArrayList<String> reference = new ArrayList<String>();
+			Random seed = new Random(test);
+			for (int trial = 0; trial < test; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				analyte.add(0, string);
+				reference.add(0, string);
+			}
+
+			if (reference.size() != analyte.size()) {
+				TesterMethods.errorMessage("Size is wrong.");
+				TesterMethods.errorMessage(test, reference.size(), analyte.size());
+				fail = true;
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
+			}
+		}
+		//adding at end tester.
+		System.out.println("Testing adding at the end");
+
+		for (int test = 0; test < tests; test++) {
+			analyte = new MyLinkedList();
+			ArrayList<String> reference = new ArrayList<String>();
+			Random seed = new Random(test);
+			for (int trial = 0; trial < test; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				analyte.add(trial, string);
+				reference.add(trial, string);
+			}
+
+			if (reference.size() != analyte.size()) {
+				TesterMethods.errorMessage("Size is wrong.");
+				TesterMethods.errorMessage(test, reference.size(), analyte.size());
+				fail = true;
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
+			}
+		}
+		//adding randomly
+		System.out.println("Testing adding randomly to the list");
+
+		for (int test = 0; test < tests; test++) {
+			analyte = new MyLinkedList();
+			ArrayList<String> reference = new ArrayList<String>();
+			Random seed = new Random(test);
+			for (int trial = 0; trial < test; trial++) {
+				String string = Integer.toString(seed.nextInt());
+				int position = seed.nextInt(trial + 1);
+				analyte.add(position, string);
+				reference.add(position, string);
+			}
+
+			if (reference.size() != analyte.size()) {
+				TesterMethods.errorMessage("Size is wrong.");
+				TesterMethods.errorMessage(test, reference.size(), analyte.size());
+				fail = true;
+			}
+
+			if (reference.toString().equals(analyte.toString())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Forward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toString());
+			}
+
+			Collections.reverse(reference);
+			if (reference.toString().equals(analyte.toStringReversed())) {
+				//TesterMethods.passMessage(test);
+			} else {
+				fail = true;
+				TesterMethods.errorMessage("Backward links broken.");
+				TesterMethods.errorMessage(test, reference.toString(), analyte.toStringReversed());
 			}
 		}
 
