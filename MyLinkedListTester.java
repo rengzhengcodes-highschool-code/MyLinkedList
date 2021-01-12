@@ -13,7 +13,8 @@ public class MyLinkedListTester {
 			failure = addAtIndexTester(100) || failure;
 			failure = getTester(10) || failure;
 			failure = setTester(100) || failure;
-			failure = removeTester(1000) || failure;
+			failure = removeTester(100) || failure;
+			failure = extendTester(1000) || failure;
 
 			TesterMethods.overall(failure);
 		} else {
@@ -639,6 +640,98 @@ public class MyLinkedListTester {
 	public static boolean extendTester(int tests) {
 		TesterMethods.tester("extend");
 		boolean fail = false;
+		//static tests
+		//combining 2 empty Linkedlists
+		System.out.println("Combining 2 empty LinkedLists");
+
+		MyLinkedList a = new MyLinkedList();
+		MyLinkedList b = new MyLinkedList();
+		a.extend(b);
+		if (a.size() == 0) {
+			TesterMethods.passMessage("Size good.");
+		}
+		if (b.size() != 0) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared");
+		}
+		if (a.toString().equals("[]") && b.toString().equals("[]")) {
+			TesterMethods.passMessage("Arrays good.");
+		}
+		//empty extending 1
+		System.out.println("empty extending 1");
+
+		a = new MyLinkedList();
+		b = new MyLinkedList();
+		b.add("test");
+		a.extend(b);
+		if (a.size() == 1) {
+			TesterMethods.passMessage("Size good.");
+		}
+		if (b.size() != 0) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared");
+		}
+		if (a.toString().equals("[test]") && b.toString().equals("[]")) {
+			TesterMethods.passMessage("Arrays good.");
+		}
+		//empty extending 2
+		System.out.println("empty extending 2");
+
+		a = new MyLinkedList();
+		b = new MyLinkedList();
+		b.add("test1");
+		b.add("test2");
+		a.extend(b);
+		if (a.size() == 2) {
+			TesterMethods.passMessage("Size good.");
+		}
+		if (b.size() != 0) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared");
+		}
+		if (a.toString().equals("[test1, test2]") && b.toString().equals("[]")) {
+			TesterMethods.passMessage("Arrays good.");
+		}
+		//1 extending empty
+		System.out.println("1 extending empty");
+
+		a = new MyLinkedList();
+		b = new MyLinkedList();
+		a.add("test");
+		a.extend(b);
+		if (a.size() == 1) {
+			TesterMethods.passMessage("Size good.");
+		}
+		if (b.size() != 0) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared");
+		}
+		if (a.toString().equals("[test]") && b.toString().equals("[]")) {
+			TesterMethods.passMessage("Arrays good.");
+		}
+		//2 extending empty
+		System.out.println("2 extending empty");
+
+		a = new MyLinkedList();
+		b = new MyLinkedList();
+		a.add("test1");
+		a.add("test2");
+		a.extend(b);
+		if (a.size() == 2) {
+			TesterMethods.passMessage("Size good.");
+		}
+		if (b.size() != 0) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared");
+		}
+		if (a.toString().equals("[test1, test2]") && b.toString().equals("[]")) {
+			TesterMethods.passMessage("Arrays good.");
+		}
+
+		for (int test = 0; test < tests; test++) {
+			ArrayList<String> reference = new ArrayList<String>();
+			a = new MyLinkedList();
+		}
 
 		TesterMethods.methodMessage("extend", fail);
 		return fail;
