@@ -43,6 +43,12 @@ public class TesterMethods {
 		System.out.println("Actual:" + actual);
 	}
 
+	public static void errorMessage(String testCase, int expected, int actual) {
+		errorMessage(testCase);
+		System.out.println("Expected: " + expected);
+		System.out.println("Actual:" + actual);
+	}
+
 	public static void errorMessage(int testCase, String expected, String actual) {
 		errorMessage(Integer.toString(testCase), expected, actual);
 	}
