@@ -649,33 +649,57 @@ public class MyLinkedListTester {
 		a.extend(b);
 		if (a.size() == 0) {
 			TesterMethods.passMessage("Size good.");
-		}
-		if (b.size() != 0) {
+		} else {
 			fail = true;
-			TesterMethods.errorMessage("b not cleared");
+			TesterMethods.errorMessage("a size", a.size(), 0);
 		}
-		if (a.toString().equals("[]") && b.toString().equals("[]")) {
-			TesterMethods.passMessage("Arrays good.");
+		if (b.size() != 0 && b.toString().equals("[]") && b.toStringReversed().equals("[]")) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared properly");
 		}
-		//empty extending 1
-		System.out.println("empty extending 1");
+		if (a.toString().equals("[]")) {
+			TesterMethods.passMessage("Links good forward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going forwards", a.toString(), "[]");
+		}
+		if (a.toStringReversed().equals("[]")) {
+			TesterMethods.passMessage("Links good backward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going backwards", a.toStringReversed(), "[]");
+		}
+		//empty extends 1
+		System.out.println("empty extends 1");
 
 		a = new MyLinkedList();
 		b = new MyLinkedList();
-		b.add("test");
+		b.add("Test");
 		a.extend(b);
 		if (a.size() == 1) {
 			TesterMethods.passMessage("Size good.");
-		}
-		if (b.size() != 0) {
+		} else {
 			fail = true;
-			TesterMethods.errorMessage("b not cleared");
+			TesterMethods.errorMessage("a size", a.size(), 1);
 		}
-		if (a.toString().equals("[test]") && b.toString().equals("[]")) {
-			TesterMethods.passMessage("Arrays good.");
+		if (b.size() != 0 && b.toString().equals("[]") && b.toStringReversed().equals("[]")) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared properly");
 		}
-		//empty extending 2
-		System.out.println("empty extending 2");
+		if (a.toString().equals("[Test]")) {
+			TesterMethods.passMessage("Links good forward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going forwards", a.toString(), "[Test]");
+		}
+		if (a.toStringReversed().equals("[Test]")) {
+			TesterMethods.passMessage("Links good backward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going backwards", a.toStringReversed(), "[Test]");
+		}
+		//empty extends 2
+		System.out.println("empty extends 2");
 
 		a = new MyLinkedList();
 		b = new MyLinkedList();
@@ -684,33 +708,57 @@ public class MyLinkedListTester {
 		a.extend(b);
 		if (a.size() == 2) {
 			TesterMethods.passMessage("Size good.");
-		}
-		if (b.size() != 0) {
+		} else {
 			fail = true;
-			TesterMethods.errorMessage("b not cleared");
+			TesterMethods.errorMessage("a size", a.size(), 2);
 		}
-		if (a.toString().equals("[test1, test2]") && b.toString().equals("[]")) {
-			TesterMethods.passMessage("Arrays good.");
+		if (b.size() != 0 && b.toString().equals("[]") && b.toStringReversed().equals("[]")) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared properly");
 		}
-		//1 extending empty
-		System.out.println("1 extending empty");
+		if (a.toString().equals("[test1, test2]")) {
+			TesterMethods.passMessage("Links good forward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going forwards", a.toString(), "[test1, test2]");
+		}
+		if (a.toStringReversed().equals("[test2, test1]")) {
+			TesterMethods.passMessage("Links good backward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going backwards", a.toStringReversed(), "[test2, test1]");
+		}
+		//1 extends empty
+		System.out.println("1 extends empty");
 
 		a = new MyLinkedList();
 		b = new MyLinkedList();
-		a.add("test");
+		a.add("Test");
 		a.extend(b);
 		if (a.size() == 1) {
 			TesterMethods.passMessage("Size good.");
-		}
-		if (b.size() != 0) {
+		} else {
 			fail = true;
-			TesterMethods.errorMessage("b not cleared");
+			TesterMethods.errorMessage("a size", a.size(), 1);
 		}
-		if (a.toString().equals("[test]") && b.toString().equals("[]")) {
-			TesterMethods.passMessage("Arrays good.");
+		if (b.size() != 0 && b.toString().equals("[]") && b.toStringReversed().equals("[]")) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared properly");
 		}
-		//2 extending empty
-		System.out.println("2 extending empty");
+		if (a.toString().equals("[Test]")) {
+			TesterMethods.passMessage("Links good forward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going forwards", a.toString(), "[Test]");
+		}
+		if (a.toStringReversed().equals("[Test]")) {
+			TesterMethods.passMessage("Links good backward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going backwards", a.toStringReversed(), "[Test]");
+		}
+		//2 extends empty
+		System.out.println("2 extends empty");
 
 		a = new MyLinkedList();
 		b = new MyLinkedList();
@@ -719,18 +767,25 @@ public class MyLinkedListTester {
 		a.extend(b);
 		if (a.size() == 2) {
 			TesterMethods.passMessage("Size good.");
-		}
-		if (b.size() != 0) {
+		} else {
 			fail = true;
-			TesterMethods.errorMessage("b not cleared");
+			TesterMethods.errorMessage("a size", a.size(), 2);
 		}
-		if (a.toString().equals("[test1, test2]") && b.toString().equals("[]")) {
-			TesterMethods.passMessage("Arrays good.");
+		if (b.size() != 0 && b.toString().equals("[]") && b.toStringReversed().equals("[]")) {
+			fail = true;
+			TesterMethods.errorMessage("b not cleared properly");
 		}
-
-		for (int test = 0; test < tests; test++) {
-			ArrayList<String> reference = new ArrayList<String>();
-			a = new MyLinkedList();
+		if (a.toString().equals("[test1, test2]")) {
+			TesterMethods.passMessage("Links good forward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going forwards", a.toString(), "[test1, test2]");
+		}
+		if (a.toStringReversed().equals("[test2, test1]")) {
+			TesterMethods.passMessage("Links good backward.");
+		} else {
+			fail = true;
+			TesterMethods.errorMessage("List going backwards", a.toStringReversed(), "[test2, test1]");
 		}
 
 		TesterMethods.methodMessage("extend", fail);
