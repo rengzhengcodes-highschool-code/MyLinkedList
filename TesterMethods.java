@@ -3,9 +3,9 @@ public class TesterMethods {
 	public static void overall(boolean failure) {
 		System.out.println("\n ~~~ Overall Result ~~~");
 		if (failure) {
-			System.out.println("Coal for you!");
+			System.out.println("The fireworks have gone wrong!");
 		} else {
-			System.out.println("Happy Holidays!");
+			System.out.println("Happy New Year!");
 		}
 	}
 
